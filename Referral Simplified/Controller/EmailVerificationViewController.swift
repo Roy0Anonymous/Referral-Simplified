@@ -1,21 +1,26 @@
 //
-//  StudentDetailsViewController.swift
+//  EmailVerificationViewController.swift
 //  Referral Simplified
 //
 //  Created by Rahul Roy on 30/12/22.
 //
 
 import UIKit
+import FirebaseAuth
 
-class StudentDetailsViewController: UIViewController {
+class EmailVerificationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        let appearance = UINavigationBarAppearance()
-//        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        navigationItem.standardAppearance = appearance
+        Auth.auth().currentUser?.sendEmailVerification { error in
+            if let safeError = error {
+                print(safeError)
+            } else {
+                print("Hello")
+            }
+        }
     }
     
 
