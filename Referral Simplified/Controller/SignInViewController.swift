@@ -31,6 +31,7 @@ class SignInViewController: UIViewController {
                     print(safeError)
                 } else {
                     if Auth.auth().currentUser?.isEmailVerified == true {
+                        print(Auth.auth().currentUser?.isEmailVerified as Any)
                         print("chu chu")
                     } else {
                         print("No chu chu")
