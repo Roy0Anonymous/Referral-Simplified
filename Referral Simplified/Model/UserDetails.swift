@@ -8,11 +8,11 @@
 import Foundation
 
 class UserDetails {
-    var name: String?
-    var email: String?
-    var phone: String?
+    var name: String
+    var email: String
+    var phone: String
     var isStudent: Bool?
-    init(name: String? = nil, email: String? = nil, phone: String? = nil, isStudent: Bool? = nil) {
+    init(name: String, email: String, phone: String, isStudent: Bool? = nil) {
         self.name = name
         self.email = email
         self.phone = phone
@@ -21,8 +21,9 @@ class UserDetails {
 }
 
 class Student: UserDetails {
-    var resume: Data?
+    var resume: NSData?
     var university: String?
+    var degree: String?
     var dob: String?
     var graduation: Int?
 }

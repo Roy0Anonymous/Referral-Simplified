@@ -15,6 +15,7 @@
 		C68A2EF9295E4A0D002830F7 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A2EF8295E4A0D002830F7 /* UserDetails.swift */; };
 		C68A2EFB295E5BCE002830F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68A2EFA295E5BCE002830F7 /* GoogleService-Info.plist */; };
 		C69EBA1D295F791F0047BB0A /* StuProSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69EBA1C295F791F0047BB0A /* StuProSelectionViewController.swift */; };
+		C6AC26CE2964D10600CF9322 /* StudentMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AC26CD2964D10600CF9322 /* StudentMainViewController.swift */; };
 		C6C8E8FB295E1F47009A93A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E8FA295E1F47009A93A0 /* AppDelegate.swift */; };
 		C6C8E8FD295E1F47009A93A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E8FC295E1F47009A93A0 /* SceneDelegate.swift */; };
 		C6C8E8FF295E1F47009A93A0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E8FE295E1F47009A93A0 /* SignUpViewController.swift */; };
@@ -36,6 +37,7 @@
 		C68A2EF8295E4A0D002830F7 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		C68A2EFA295E5BCE002830F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C69EBA1C295F791F0047BB0A /* StuProSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuProSelectionViewController.swift; sourceTree = "<group>"; };
+		C6AC26CD2964D10600CF9322 /* StudentMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMainViewController.swift; sourceTree = "<group>"; };
 		C6C8E8F7295E1F47009A93A0 /* Referral Simplified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Referral Simplified.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C8E8FA295E1F47009A93A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C8E8FC295E1F47009A93A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				C69EBA1C295F791F0047BB0A /* StuProSelectionViewController.swift */,
 				C611A58A295FA6630048D323 /* StudentDescriptionViewController.swift */,
 				C611A58C295FA6DD0048D323 /* ProfessionalDescriptionViewController.swift */,
+				C6AC26CD2964D10600CF9322 /* StudentMainViewController.swift */,
 				C6265255295E649700A75D7B /* SignInViewController.swift */,
 			);
 			path = Controller;
@@ -261,6 +264,7 @@
 				C6C8E8FF295E1F47009A93A0 /* SignUpViewController.swift in Sources */,
 				C6C8E8FB295E1F47009A93A0 /* AppDelegate.swift in Sources */,
 				C6C8E911295E278A009A93A0 /* SignUpLogInViewController.swift in Sources */,
+				C6AC26CE2964D10600CF9322 /* StudentMainViewController.swift in Sources */,
 				C6C8E8FD295E1F47009A93A0 /* SceneDelegate.swift in Sources */,
 				C6265254295E613D00A75D7B /* EmailVerificationViewController.swift in Sources */,
 				C68A2EF9295E4A0D002830F7 /* UserDetails.swift in Sources */,
@@ -407,11 +411,13 @@
 				DEVELOPMENT_TEAM = L6UN4PT9N8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Referral Simplified/Info.plist";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -436,11 +442,13 @@
 				DEVELOPMENT_TEAM = L6UN4PT9N8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Referral Simplified/Info.plist";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

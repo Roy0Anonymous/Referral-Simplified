@@ -7,14 +7,17 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 class SignInViewController: UIViewController {
-
+    
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
+    let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         emailField.delegate = self
         passwordField.delegate = self
@@ -23,23 +26,31 @@ class SignInViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         emailField.becomeFirstResponder()
     }
-
+    
     @IBAction func logIn(_ sender: UIButton) {
         if let email = emailField.text, let password = passwordField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let safeError = error {
                     print(safeError)
                 } else {
-                    if Auth.auth().currentUser?.isEmailVerified == true {
-                        print(Auth.auth().currentUser?.isEmailVerified as Any)
-                        print("chu chu")
-                    } else {
-                        print("No chu chu")
+                    self.db.collection("Students").getDocuments() { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            for document in querySnapshot!.documents {
+                                if (document.data()["email"] as! String) == Auth.auth().currentUser?.email && document.data()["isStudent"] as! Bool == true {
+                                    self.performSegue(withIdentifier: "loginToStudentMain", sender: self)
+                                    return
+                                }
+                            }
+                            self.performSegue(withIdentifier: "loginToProfessionalMain", sender: self)
+                        }
                     }
                 }
             }
         }
     }
+}
     
     /*
     // MARK: - Navigation
@@ -50,8 +61,6 @@ class SignInViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}
 
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
