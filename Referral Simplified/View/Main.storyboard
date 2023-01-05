@@ -149,10 +149,10 @@
             </objects>
             <point key="canvasLocation" x="3733.5877862595416" y="168.3098591549296"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--SignUP View Controller-->
         <scene sceneID="WxE-wg-8P1">
             <objects>
-                <viewController id="tIz-yC-kvZ" customClass="SignUpViewController" customModule="Referral_Simplified" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tIz-yC-kvZ" customClass="SignUPViewController" customModule="Referral_Simplified" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VWj-Kf-myI">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -412,11 +412,11 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="next" textContentType="family-name"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lOO-pr-Qin">
-                                <rect key="frame" x="203" y="316" width="130" height="88"/>
+                                <rect key="frame" x="202" y="316" width="130" height="88"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="vPZ-dy-m2s">
-                                <rect key="frame" x="203" y="401" width="124" height="54"/>
+                                <rect key="frame" x="202" y="401" width="123" height="54"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6n-i1-SZf">

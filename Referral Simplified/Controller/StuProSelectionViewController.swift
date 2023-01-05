@@ -9,7 +9,6 @@ import UIKit
 
 class StuProSelectionViewController: UIViewController {
     var userDetails: UserDetails = UserDetails(name: "", email: "", phone: "")
-    let signUpVC = SignUpViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
 //        print(userDetails.name)

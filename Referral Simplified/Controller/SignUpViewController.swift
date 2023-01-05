@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 
-class SignUpViewController: UIViewController {
+class SignUPViewController: UIViewController {
 
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var nameField: UITextField!
@@ -55,7 +55,7 @@ class SignUpViewController: UIViewController {
     }
 }
 
-extension SignUpViewController: UITextFieldDelegate {
+extension SignUPViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switchBasedNextTextField(textField)
         return true
