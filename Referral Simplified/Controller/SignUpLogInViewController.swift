@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 class SignUpLogInViewController: UIViewController {
 
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var bottomView: UIView!
+    let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +26,27 @@ class SignUpLogInViewController: UIViewController {
         signInButton.layer.cornerRadius = 5
         signInButton.layer.borderWidth = 1
         signInButton.layer.borderColor = UIColor.systemBlue.cgColor
+        
+//        let currentUser = Auth.auth().currentUser
+//
+//        if currentUser != nil {
+////            print(Auth.auth().currentUser?.email)
+//
+//            var docRef = db.collection("Students").document(currentUser!.uid)
+//            docRef.getDocument { (document, error) in
+//                if let document = document, document.exists {
+//                    self.performSegue(withIdentifier: "homeToStudentMain", sender: self)
+//                    return
+//                }
+//            }
+//            docRef = db.collection("Professionals").document(currentUser!.uid)
+//            docRef.getDocument { (document, error) in
+//                if let document = document, document.exists {
+//                    self.performSegue(withIdentifier: "homeToProfessionalMain", sender: self)
+//                    return
+//                }
+//            }
+//        }
     }
     
 

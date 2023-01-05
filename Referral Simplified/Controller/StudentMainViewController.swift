@@ -8,8 +8,10 @@
 import UIKit
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseAuth
 
 class StudentMainViewController: UIViewController {
+    @IBOutlet weak var refererNotAvailable: UILabel!
     let db = Firestore.firestore()
     var companies: [String] = []
     @IBOutlet weak var searchCompanies: UITextField!
@@ -17,6 +19,8 @@ class StudentMainViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         searchCompanies.delegate = self
+        refererNotAvailable.isHidden = true
+        loadCompanies()
     }
     
     func loadCompanies() {
@@ -35,15 +39,43 @@ class StudentMainViewController: UIViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func submit(_ sender: UIButton) {
+        if let company = searchCompanies.text {
+            if companies.contains(company) {
+                performSegue(withIdentifier: "searchToSendRequest", sender: self)
+            } else {
+                refererNotAvailable.isHidden = false
+                if company != "" {
+                    refererNotAvailable.text = "No Referer found for " + company
+                } else {
+                    refererNotAvailable.text = "Enter a Company Name"
+                }
+            }
+        }
     }
-    */
+
+
+    @IBAction func logOut(_ sender: UIBarButtonItem) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let homePage = mainStoryboard.instantiateViewController(withIdentifier: "InitialNavController") as! UINavigationController
+            homePage.modalPresentationStyle = .fullScreen
+            present(homePage, animated: true)
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchToSendRequest" {
+            let vc = segue.destination as! CompanyPortalViewController
+            if let company = searchCompanies.text {
+                vc.currentCompany = company
+            }
+        }
+    }
 
 }
 

@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    let db = Firestore.firestore()
     var window: UIWindow?
 
 
@@ -16,7 +19,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let currentUser = Auth.auth().currentUser
+        if currentUser != nil {
+            var docRef = db.collection("Students").document(currentUser!.uid)
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    print("Student me ghusa")
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homePage = mainStoryboard.instantiateViewController(withIdentifier: "studentlNavController") as! UINavigationController
+                    DispatchQueue.main.async {
+                        self.window?.rootViewController = homePage
+                    }
+                    return
+                }
+            }
+            docRef = db.collection("Professionals").document(currentUser!.uid)
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    print("Professional me ghusa")
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homePage = mainStoryboard.instantiateViewController(withIdentifier: "professionalNavController") as! UINavigationController
+                    DispatchQueue.main.async {
+                        self.window?.rootViewController = homePage
+                    }
+                    return
+                }
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

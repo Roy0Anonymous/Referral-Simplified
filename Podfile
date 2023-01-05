@@ -8,5 +8,6 @@ target 'Referral Simplified' do
   # Pods for Referral Simplified
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'FirebaseStorage'
   pod 'IQKeyboardManagerSwift'
 end

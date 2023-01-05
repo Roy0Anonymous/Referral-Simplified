@@ -34,10 +34,12 @@ class SignInViewController: UIViewController {
                     print(safeError)
                 } else {
                     self.db.collection("Students").getDocuments() { (querySnapshot, err) in
+//                        print(Auth.auth().currentUser?.uid)
                         if let err = err {
                             print("Error getting documents: \(err)")
                         } else {
                             for document in querySnapshot!.documents {
+                                print(document.documentID)
                                 if (document.data()["email"] as! String) == Auth.auth().currentUser?.email && document.data()["isStudent"] as! Bool == true {
                                     self.performSegue(withIdentifier: "loginToStudentMain", sender: self)
                                     return
@@ -50,6 +52,15 @@ class SignInViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loginToStudentMain" ||
+            segue.identifier == "loginToProfessionalMain" {
+            let vc = segue.destination as! UINavigationController
+            vc.modalPresentationStyle = .fullScreen
+        }
+    }
+    
 }
     
     /*

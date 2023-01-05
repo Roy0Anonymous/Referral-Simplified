@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseAuth
 
 class ProfessionalDescriptionViewController: UIViewController {
     @IBOutlet weak var positionField: UITextField!
@@ -25,22 +26,24 @@ class ProfessionalDescriptionViewController: UIViewController {
             professionalDetails.company = company
             professionalDetails.position = position
             
-            var ref: DocumentReference? = nil
-            ref = db.collection("Professionals").addDocument(data: [
+            let newDocumentID = Auth.auth().currentUser?.uid
+//            print(newDocumentID!)
+            db.collection("Professionals").document(newDocumentID!).setData([
                 "name" : professionalDetails.name,
                 "email" : professionalDetails.email,
                 "phone" : professionalDetails.phone,
                 "company" : company,
                 "position" : position,
                 "isStudent" : professionalDetails.isStudent!
-            ]) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
+            ], merge: true)  { error in
+                if let safeError = error {
+                    print(safeError)
                 } else {
-                    print("Document added with ID: \(ref!.documentID)")
+                    self.performSegue(withIdentifier: "detailsToProfessionalMain", sender: self)
                 }
             }
             
+            var ref: DocumentReference? = nil
             ref = db.collection("CompanyList").addDocument(data: [
                 "company" : company
             ]) { err in
@@ -50,6 +53,13 @@ class ProfessionalDescriptionViewController: UIViewController {
                     print("Document added with ID: \(ref!.documentID)")
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailsToProfessionalMain" {
+            let vc = segue.destination as! UINavigationController
+            vc.modalPresentationStyle = .fullScreen
         }
     }
     

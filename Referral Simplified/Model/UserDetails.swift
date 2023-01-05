@@ -21,7 +21,7 @@ class UserDetails {
 }
 
 class Student: UserDetails {
-    var resume: NSData?
+    var resume: URL?
     var university: String?
     var degree: String?
     var dob: String?
