@@ -14,11 +14,11 @@
 		C68A2EF7295E4635002830F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C68A2EF6295E4635002830F7 /* Main.storyboard */; };
 		C68A2EF9295E4A0D002830F7 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A2EF8295E4A0D002830F7 /* UserDetails.swift */; };
 		C68A2EFB295E5BCE002830F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68A2EFA295E5BCE002830F7 /* GoogleService-Info.plist */; };
+		C699CC9729665AA800CC37EA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C699CC9629665AA800CC37EA /* SignUpViewController.swift */; };
 		C69EBA1D295F791F0047BB0A /* StuProSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69EBA1C295F791F0047BB0A /* StuProSelectionViewController.swift */; };
 		C6AC26CE2964D10600CF9322 /* StudentMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AC26CD2964D10600CF9322 /* StudentMainViewController.swift */; };
 		C6C8E8FB295E1F47009A93A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E8FA295E1F47009A93A0 /* AppDelegate.swift */; };
 		C6C8E8FD295E1F47009A93A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E8FC295E1F47009A93A0 /* SceneDelegate.swift */; };
-		C6C8E8FF295E1F47009A93A0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E8FE295E1F47009A93A0 /* SignUpViewController.swift */; };
 		C6C8E904295E1F49009A93A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C8E903295E1F49009A93A0 /* Assets.xcassets */; };
 		C6C8E907295E1F49009A93A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C8E905295E1F49009A93A0 /* LaunchScreen.storyboard */; };
 		C6C8E911295E278A009A93A0 /* SignUpLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E910295E278A009A93A0 /* SignUpLogInViewController.swift */; };
@@ -38,12 +38,12 @@
 		C68A2EF6295E4635002830F7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C68A2EF8295E4A0D002830F7 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		C68A2EFA295E5BCE002830F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C699CC9629665AA800CC37EA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C69EBA1C295F791F0047BB0A /* StuProSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuProSelectionViewController.swift; sourceTree = "<group>"; };
 		C6AC26CD2964D10600CF9322 /* StudentMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMainViewController.swift; sourceTree = "<group>"; };
 		C6C8E8F7295E1F47009A93A0 /* Referral Simplified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Referral Simplified.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C8E8FA295E1F47009A93A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C8E8FC295E1F47009A93A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C6C8E8FE295E1F47009A93A0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C6C8E903295E1F49009A93A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6C8E906295E1F49009A93A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6C8E908295E1F49009A93A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C8E910295E278A009A93A0 /* SignUpLogInViewController.swift */,
-				C6C8E8FE295E1F47009A93A0 /* SignUpViewController.swift */,
+				C699CC9629665AA800CC37EA /* SignUpViewController.swift */,
 				C6265253295E613D00A75D7B /* EmailVerificationViewController.swift */,
 				C69EBA1C295F791F0047BB0A /* StuProSelectionViewController.swift */,
 				C611A58A295FA6630048D323 /* StudentDescriptionViewController.swift */,
@@ -269,13 +269,13 @@
 				C611A58D295FA6DD0048D323 /* ProfessionalDescriptionViewController.swift in Sources */,
 				C69EBA1D295F791F0047BB0A /* StuProSelectionViewController.swift in Sources */,
 				C6265256295E649700A75D7B /* SignInViewController.swift in Sources */,
-				C6C8E8FF295E1F47009A93A0 /* SignUpViewController.swift in Sources */,
 				C6C8E8FB295E1F47009A93A0 /* AppDelegate.swift in Sources */,
 				C6C8E911295E278A009A93A0 /* SignUpLogInViewController.swift in Sources */,
 				C6AC26CE2964D10600CF9322 /* StudentMainViewController.swift in Sources */,
 				C6C8E8FD295E1F47009A93A0 /* SceneDelegate.swift in Sources */,
 				C6265254295E613D00A75D7B /* EmailVerificationViewController.swift in Sources */,
 				C68A2EF9295E4A0D002830F7 /* UserDetails.swift in Sources */,
+				C699CC9729665AA800CC37EA /* SignUpViewController.swift in Sources */,
 				C611A58B295FA6630048D323 /* StudentDescriptionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
