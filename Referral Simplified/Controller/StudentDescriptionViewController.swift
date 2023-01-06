@@ -24,8 +24,10 @@ class StudentDescriptionViewController: UIViewController {
     var img: UIImage?
     var studentDetails: Student = Student(name: "", email: "", phone: "")
     let gradYears = [Int](2000...2050)
+    
     let db = Firestore.firestore()
     let storage = Storage.storage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

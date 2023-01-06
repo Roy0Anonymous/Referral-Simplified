@@ -23,32 +23,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        let currentUser = Auth.auth().currentUser
-        if currentUser != nil {
-            var docRef = db.collection("Students").document(currentUser!.uid)
-            docRef.getDocument { (document, error) in
-                if let document = document, document.exists {
-                    print("Student me ghusa")
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let homePage = mainStoryboard.instantiateViewController(withIdentifier: "studentlNavController") as! UINavigationController
-                    DispatchQueue.main.async {
-                        self.window?.rootViewController = homePage
+        Firestore.firestore().disableNetwork { (error) in
+            let currentUser = Auth.auth().currentUser
+            if currentUser != nil {
+                var docRef = self.db.collection("Students").document(currentUser!.uid)
+                docRef.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        print("Student me ghusa")
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homePage = mainStoryboard.instantiateViewController(withIdentifier: "studentlNavController") as! UINavigationController
+                        Firestore.firestore().enableNetwork { (error) in }
+                        DispatchQueue.main.async {
+                            self.window?.rootViewController = homePage
+                        }
+                        return
                     }
-                    return
+                }
+                docRef = self.db.collection("Professionals").document(currentUser!.uid)
+                docRef.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        print("Professional me ghusa")
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homePage = mainStoryboard.instantiateViewController(withIdentifier: "professionalNavController") as! UINavigationController
+                        Firestore.firestore().enableNetwork { (error) in }
+                        DispatchQueue.main.async {
+                            self.window?.rootViewController = homePage
+                        }
+                        return
+                    }
                 }
             }
-            docRef = db.collection("Professionals").document(currentUser!.uid)
-            docRef.getDocument { (document, error) in
-                if let document = document, document.exists {
-                    print("Professional me ghusa")
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let homePage = mainStoryboard.instantiateViewController(withIdentifier: "professionalNavController") as! UINavigationController
-                    DispatchQueue.main.async {
-                        self.window?.rootViewController = homePage
-                    }
-                    return
-                }
-            }
+            Firestore.firestore().enableNetwork { (error) in }
         }
     }
 

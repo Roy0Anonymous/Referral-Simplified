@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C61089192967257C00F30342 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61089182967257C00F30342 /* SignUpViewController.swift */; };
 		C611A58B295FA6630048D323 /* StudentDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C611A58A295FA6630048D323 /* StudentDescriptionViewController.swift */; };
 		C611A58D295FA6DD0048D323 /* ProfessionalDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C611A58C295FA6DD0048D323 /* ProfessionalDescriptionViewController.swift */; };
 		C6265254295E613D00A75D7B /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6265253295E613D00A75D7B /* EmailVerificationViewController.swift */; };
 		C6265256295E649700A75D7B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6265255295E649700A75D7B /* SignInViewController.swift */; };
-		C6343F0829671E1600E4BA44 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6343F0729671E1600E4BA44 /* SignUpViewController.swift */; };
 		C68A2EF7295E4635002830F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C68A2EF6295E4635002830F7 /* Main.storyboard */; };
 		C68A2EF9295E4A0D002830F7 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A2EF8295E4A0D002830F7 /* UserDetails.swift */; };
 		C68A2EFB295E5BCE002830F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C68A2EFA295E5BCE002830F7 /* GoogleService-Info.plist */; };
@@ -31,11 +31,11 @@
 		4E7A0C92E7FEE4A6A319BDD5 /* Pods-Referral Simplified.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Referral Simplified.debug.xcconfig"; path = "Target Support Files/Pods-Referral Simplified/Pods-Referral Simplified.debug.xcconfig"; sourceTree = "<group>"; };
 		7C8809C57BE8A75EEDC4B983 /* Pods_Referral_Simplified.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Referral_Simplified.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B91C24A5ABAEBE1DA0F4BE /* Pods-Referral Simplified.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Referral Simplified.release.xcconfig"; path = "Target Support Files/Pods-Referral Simplified/Pods-Referral Simplified.release.xcconfig"; sourceTree = "<group>"; };
+		C61089182967257C00F30342 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C611A58A295FA6630048D323 /* StudentDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDescriptionViewController.swift; sourceTree = "<group>"; };
 		C611A58C295FA6DD0048D323 /* ProfessionalDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalDescriptionViewController.swift; sourceTree = "<group>"; };
 		C6265253295E613D00A75D7B /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
 		C6265255295E649700A75D7B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		C6343F0729671E1600E4BA44 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C68A2EF6295E4635002830F7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C68A2EF8295E4A0D002830F7 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		C68A2EFA295E5BCE002830F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 				C6265255295E649700A75D7B /* SignInViewController.swift */,
 				C6DE282F2965F4CD00AC746C /* CompanyPortalViewController.swift */,
 				C6DE28312965FE3700AC746C /* ProfessionalMainViewController.swift */,
-				C6343F0729671E1600E4BA44 /* SignUpViewController.swift */,
+				C61089182967257C00F30342 /* SignUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -268,7 +268,6 @@
 				C6DE28322965FE3700AC746C /* ProfessionalMainViewController.swift in Sources */,
 				C611A58D295FA6DD0048D323 /* ProfessionalDescriptionViewController.swift in Sources */,
 				C69EBA1D295F791F0047BB0A /* StuProSelectionViewController.swift in Sources */,
-				C6343F0829671E1600E4BA44 /* SignUpViewController.swift in Sources */,
 				C6265256295E649700A75D7B /* SignInViewController.swift in Sources */,
 				C6C8E8FB295E1F47009A93A0 /* AppDelegate.swift in Sources */,
 				C6C8E911295E278A009A93A0 /* SignUpLogInViewController.swift in Sources */,
@@ -276,6 +275,7 @@
 				C6C8E8FD295E1F47009A93A0 /* SceneDelegate.swift in Sources */,
 				C6265254295E613D00A75D7B /* EmailVerificationViewController.swift in Sources */,
 				C68A2EF9295E4A0D002830F7 /* UserDetails.swift in Sources */,
+				C61089192967257C00F30342 /* SignUpViewController.swift in Sources */,
 				C611A58B295FA6630048D323 /* StudentDescriptionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
