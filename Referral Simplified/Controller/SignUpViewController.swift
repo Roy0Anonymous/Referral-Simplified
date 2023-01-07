@@ -12,6 +12,8 @@ import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var phoneNumberField: UITextField!
@@ -19,14 +21,50 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailField.delegate = self
-        phoneNumberField.delegate = self
-        nameField.delegate = self
+
+        let myColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
+        nameField.delegate = self
+        nameField.layer.cornerRadius = 10.0
+        nameField.layer.borderWidth = 2.0
+//        nameField.layer.borderColor = myColor.cgColor
+        nameField.backgroundColor = myColor
+        nameField.clipsToBounds = true
+        
+        emailField.delegate = self
+        emailField.layer.cornerRadius = 10.0
+        emailField.layer.borderWidth = 2.0
+        emailField.backgroundColor = myColor
+        emailField.clipsToBounds = true
+        
+        phoneNumberField.delegate = self
+        phoneNumberField.layer.cornerRadius = 10.0
+        phoneNumberField.layer.borderWidth = 2.0
+        phoneNumberField.backgroundColor = myColor
+        phoneNumberField.clipsToBounds = true
+        
+        passwordField.layer.cornerRadius = 10.0
+        passwordField.layer.borderWidth = 2.0
+        passwordField.backgroundColor = myColor
+        passwordField.clipsToBounds = true
+        
+        registerButton.layer.cornerRadius = 15.0
+        registerButton.clipsToBounds = true
+        
+        navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
     }
-    override func viewDidAppear(_ animated: Bool) {
-        nameField.becomeFirstResponder()
+    
+    
+    @IBAction func didChangeValue(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 1 {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let signIn = mainStoryboard.instantiateViewController(withIdentifier: "SignIn") as! UINavigationController
+            signIn.modalPresentationStyle = .fullScreen
+            DispatchQueue.main.async {
+                self.present(signIn, animated: false)
+            }
+        }
     }
     
     @IBAction func saveData(_ sender: UIButton) {

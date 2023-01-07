@@ -12,44 +12,61 @@ import FirebaseFirestore
 
 class SignUpLogInViewController: UIViewController {
 
-    @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var homeImageView: UIImageView!
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var registerSignInSegmentedControl: UISegmentedControl!
     let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        bottomView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        bottomView.layer.cornerRadius = bottomView.frame.height / 5
-        
-        signInButton.backgroundColor = .clear
-        signInButton.layer.cornerRadius = 5
-        signInButton.layer.borderWidth = 1
-        signInButton.layer.borderColor = UIColor.systemBlue.cgColor
-        
-//        let currentUser = Auth.auth().currentUser
-//
-//        if currentUser != nil {
-////            print(Auth.auth().currentUser?.email)
-//
-//            var docRef = db.collection("Students").document(currentUser!.uid)
-//            docRef.getDocument { (document, error) in
-//                if let document = document, document.exists {
-//                    self.performSegue(withIdentifier: "homeToStudentMain", sender: self)
-//                    return
-//                }
-//            }
-//            docRef = db.collection("Professionals").document(currentUser!.uid)
-//            docRef.getDocument { (document, error) in
-//                if let document = document, document.exists {
-//                    self.performSegue(withIdentifier: "homeToProfessionalMain", sender: self)
-//                    return
-//                }
-//            }
-//        }
+        if let url = URL.localURLForXCAsset(name: "DisplayImage") {
+            let downsampledLadyImage = downsample(imageAt: url, to: homeImageView.bounds.size)
+            homeImageView.image = downsampledLadyImage
+        }
     }
     
+    @IBAction func registerButtonTapped(_ sender: UIButton) {
+        registerButton.isHidden = true
+        performSegue(withIdentifier: "homeToRegister", sender: self)
+    }
+    
+    @IBAction func segmentTapped(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            performSegue(withIdentifier: "homeToRegister", sender: self)
+        } else if sender.selectedSegmentIndex == 1 {
+            performSegue(withIdentifier: "homeToSignIn", sender: self)
+        }
+    }
+    
+    
+    func downsample(imageAt imageURL: URL,
+                    to pointSize: CGSize,
+                    scale: CGFloat = UIScreen.main.scale) -> UIImage? {
 
+        // Create an CGImageSource that represent an image
+        let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
+        guard let imageSource = CGImageSourceCreateWithURL(imageURL as CFURL, imageSourceOptions) else {
+            return nil
+        }
+
+        // Calculate the desired dimension
+        let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scale
+
+        // Perform downsampling
+        let downsampleOptions = [
+            kCGImageSourceCreateThumbnailFromImageAlways: true,
+            kCGImageSourceShouldCacheImmediately: true,
+            kCGImageSourceCreateThumbnailWithTransform: true,
+            kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels
+        ] as CFDictionary
+        guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else {
+            return nil
+        }
+
+        // Return the downsampled image as UIImage
+        return UIImage(cgImage: downsampledImage)
+    }
     /*
     // MARK: - Navigation
 
@@ -60,4 +77,18 @@ class SignUpLogInViewController: UIViewController {
     }
     */
 
+}
+
+extension URL {
+    static func localURLForXCAsset(name: String) -> URL? {
+        let fileManager = FileManager.default
+        guard let cacheDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first else {return nil}
+        let url = cacheDirectory.appendingPathComponent("\(name).png")
+        let path = url.path
+        if !fileManager.fileExists(atPath: path) {
+            guard let image = UIImage(named: name), let data = image.pngData() else {return nil}
+            fileManager.createFile(atPath: path, contents: data, attributes: nil)
+        }
+        return url
+    }
 }

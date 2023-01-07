@@ -126,15 +126,15 @@
 			isa = PBXGroup;
 			children = (
 				C6C8E910295E278A009A93A0 /* SignUpLogInViewController.swift */,
+				C61089182967257C00F30342 /* SignUpViewController.swift */,
+				C6265255295E649700A75D7B /* SignInViewController.swift */,
 				C6265253295E613D00A75D7B /* EmailVerificationViewController.swift */,
 				C69EBA1C295F791F0047BB0A /* StuProSelectionViewController.swift */,
 				C611A58A295FA6630048D323 /* StudentDescriptionViewController.swift */,
 				C611A58C295FA6DD0048D323 /* ProfessionalDescriptionViewController.swift */,
 				C6AC26CD2964D10600CF9322 /* StudentMainViewController.swift */,
-				C6265255295E649700A75D7B /* SignInViewController.swift */,
 				C6DE282F2965F4CD00AC746C /* CompanyPortalViewController.swift */,
 				C6DE28312965FE3700AC746C /* ProfessionalMainViewController.swift */,
-				C61089182967257C00F30342 /* SignUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

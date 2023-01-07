@@ -12,6 +12,9 @@ import FirebaseFirestore
 
 class SignInViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var registerSignInSegmentedControl: UISegmentedControl!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     let db = Firestore.firestore()
@@ -19,15 +22,42 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        let myColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
         emailField.delegate = self
+        emailField.layer.cornerRadius = 15.0
+        emailField.layer.borderWidth = 2.0
+        emailField.backgroundColor = myColor
+        emailField.clipsToBounds = true
+        
         passwordField.delegate = self
+        passwordField.layer.cornerRadius = 15.0
+        passwordField.layer.borderWidth = 2.0
+        passwordField.backgroundColor = myColor
+        passwordField.clipsToBounds = true
+        
+        signInButton.layer.cornerRadius = 15.0
+        signInButton.clipsToBounds = true
+        
+        registerSignInSegmentedControl.selectedSegmentIndex = 1
+        
+        navigationItem.hidesBackButton = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        emailField.becomeFirstResponder()
+    
+    @IBAction func didChangeValues(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let register = mainStoryboard.instantiateViewController(withIdentifier: "Register") as! UINavigationController
+            register.modalPresentationStyle = .fullScreen
+            DispatchQueue.main.async {
+                self.present(register, animated: false)
+            }
+        }
     }
     
-    @IBAction func logIn(_ sender: UIButton) {
+
+    @IBAction func signIn(_ sender: UIButton) {
         if let email = emailField.text, let password = passwordField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let safeError = error {
