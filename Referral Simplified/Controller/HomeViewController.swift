@@ -10,11 +10,14 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 
-class SignUpLogInViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     @IBOutlet weak var homeImageView: UIImageView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var registerSignInSegmentedControl: UISegmentedControl!
+    
+    var isSignUp: Bool = true
+    
     let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +31,14 @@ class SignUpLogInViewController: UIViewController {
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         registerButton.isHidden = true
-        performSegue(withIdentifier: "homeToRegister", sender: self)
+        performSegue(withIdentifier: "homeToSignUpSignIn", sender: self)
+        isSignUp = true
     }
     
     @IBAction func segmentTapped(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            performSegue(withIdentifier: "homeToRegister", sender: self)
-        } else if sender.selectedSegmentIndex == 1 {
-            performSegue(withIdentifier: "homeToSignIn", sender: self)
+        if sender.selectedSegmentIndex == 1 {
+            isSignUp = false
+            performSegue(withIdentifier: "homeToSignUpSignIn", sender: self)
         }
     }
     
@@ -67,6 +70,14 @@ class SignUpLogInViewController: UIViewController {
         // Return the downsampled image as UIImage
         return UIImage(cgImage: downsampledImage)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "homeToSignUpSignIn" {
+            let vc = segue.destination as! SignUpSignInViewController
+            vc.isSignUp = isSignUp
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
