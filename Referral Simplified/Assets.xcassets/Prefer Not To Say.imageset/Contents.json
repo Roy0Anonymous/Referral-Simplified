@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "3594 (1).svg",
+      "filename" : "Prefer Not To Say.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Prefer Not To Say@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Prefer Not To Say@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

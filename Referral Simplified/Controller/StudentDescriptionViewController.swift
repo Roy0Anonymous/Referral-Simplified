@@ -31,11 +31,26 @@ class StudentDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        studentDetails.isStudent = true
+        
+        let myColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+//        univField.delegate = self
+        univField.layer.cornerRadius = 10.0
+        univField.layer.borderWidth = 2.0
+        univField.backgroundColor = myColor
+        univField.clipsToBounds = true
+        
+//        degreeField.delegate = self
+        degreeField.layer.cornerRadius = 10.0
+        degreeField.layer.borderWidth = 2.0
+        degreeField.backgroundColor = myColor
+        degreeField.clipsToBounds = true
+        
+//        studentDetails.isStudent = true
         gradPicker.delegate = self
         gradPicker.dataSource = self
-        gradPicker.overrideUserInterfaceStyle = .dark
-        dobPicker.overrideUserInterfaceStyle = .dark
+//        gradPicker.overrideUserInterfaceStyle = .dark
+//        dobPicker.overrideUserInterfaceStyle = .dark
         studentDetails.graduation = gradYears[0]
         browseLabel.isHidden = true
         spinner.isHidden = true
@@ -67,8 +82,8 @@ class StudentDescriptionViewController: UIViewController {
                 "degree" : studentDetails.degree!,
                 "graduation" : studentDetails.graduation!,
                 "dob" : studentDetails.dob!,
-                "resume" : resume.absoluteString,
-                "isStudent" : studentDetails.isStudent!
+                "resume" : resume.absoluteString
+//                "isStudent" : studentDetails.isStudent!
             ], merge: true) { error in
                 if let safeError = error {
                     print(safeError)

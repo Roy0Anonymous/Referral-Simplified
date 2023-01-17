@@ -17,7 +17,7 @@ class ProfessionalDescriptionViewController: UIViewController {
     let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
-        professionalDetails.isStudent = false
+//        professionalDetails.isStudent = false
         // Do any additional setup after loading the view.
     }
     
@@ -33,8 +33,8 @@ class ProfessionalDescriptionViewController: UIViewController {
                 "email" : professionalDetails.email,
                 "phone" : professionalDetails.phone,
                 "company" : company,
-                "position" : position,
-                "isStudent" : professionalDetails.isStudent!
+                "position" : position
+//                "isStudent" : professionalDetails.isStudent!
             ], merge: true)  { error in
                 if let safeError = error {
                     print(safeError)

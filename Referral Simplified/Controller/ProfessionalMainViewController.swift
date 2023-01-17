@@ -14,6 +14,7 @@ class ProfessionalMainViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationItem.hidesBackButton = true
     }
     
     @IBAction func logOut(_ sender: UIBarButtonItem) {

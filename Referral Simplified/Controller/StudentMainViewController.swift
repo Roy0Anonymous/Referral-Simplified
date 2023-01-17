@@ -18,6 +18,7 @@ class StudentMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationItem.hidesBackButton = true
         searchCompanies.delegate = self
         refererNotAvailable.isHidden = true
         loadCompanies()

@@ -33,42 +33,52 @@ class SignUpSignInViewController: UIViewController {
 
         let myColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
+        let attributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17),
+            .foregroundColor : UIColor.gray
+        ]
+        
         nameField.delegate = self
         nameField.layer.cornerRadius = 10.0
         nameField.layer.borderWidth = 2.0
-//        nameField.layer.borderColor = myColor.cgColor
         nameField.backgroundColor = myColor
         nameField.clipsToBounds = true
+        nameField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: attributes)
         
         emailField.delegate = self
         emailField.layer.cornerRadius = 10.0
         emailField.layer.borderWidth = 2.0
         emailField.backgroundColor = myColor
         emailField.clipsToBounds = true
+        emailField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: attributes)
         
         phoneNumberField.delegate = self
         phoneNumberField.layer.cornerRadius = 10.0
         phoneNumberField.layer.borderWidth = 2.0
         phoneNumberField.backgroundColor = myColor
         phoneNumberField.clipsToBounds = true
+        phoneNumberField.attributedPlaceholder = NSAttributedString(string: "Phone", attributes: attributes)
         
         passwordField.delegate = self
         passwordField.layer.cornerRadius = 10.0
         passwordField.layer.borderWidth = 2.0
         passwordField.backgroundColor = myColor
         passwordField.clipsToBounds = true
+        passwordField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: attributes)
         
         emailLoginField.delegate = self
         emailLoginField.layer.cornerRadius = 10.0
         emailLoginField.layer.borderWidth = 2.0
         emailLoginField.backgroundColor = myColor
         emailLoginField.clipsToBounds = true
+        emailLoginField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: attributes)
         
         passwordLoginField.delegate = self
         passwordLoginField.layer.cornerRadius = 10.0
         passwordLoginField.layer.borderWidth = 2.0
         passwordLoginField.backgroundColor = myColor
         passwordLoginField.clipsToBounds = true
+        passwordLoginField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: attributes)
         
         registerButton.layer.cornerRadius = 15.0
         registerButton.clipsToBounds = true
@@ -84,7 +94,6 @@ class SignUpSignInViewController: UIViewController {
             segmentedControl.selectedSegmentIndex = 1
             scrollView1.isHidden = true
         }
-            
     }
     
     
@@ -116,15 +125,12 @@ class SignUpSignInViewController: UIViewController {
     
     
     @IBAction func register(_ sender: UIButton) {
-//        print(nameField)
-//        print(emailField)
-//        print(phoneNumberField)
-//        print(passwordField)
-        if let email = emailField.text, let password = passwordField.text {
+        if let email = emailField.text, let password = passwordField.text, let name = nameField.text, let phone = phoneNumberField.text {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let safeError = error {
                     print(safeError)
                 } else {
+                    userDetails = UserDetails(name: name, email: email, phone: phone)
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "signUpToVerify", sender: self)
                     }
@@ -141,13 +147,12 @@ class SignUpSignInViewController: UIViewController {
                     print(safeError)
                 } else {
                     self.db.collection("Students").getDocuments() { (querySnapshot, err) in
-                        //                        print(Auth.auth().currentUser?.uid)
                         if let err = err {
                             print("Error getting documents: \(err)")
                         } else {
                             for document in querySnapshot!.documents {
                                 print(document.documentID)
-                                if (document.data()["email"] as! String) == Auth.auth().currentUser?.email && document.data()["isStudent"] as! Bool == true {
+                                if (document.data()["email"] as! String) == Auth.auth().currentUser?.email {
                                     self.performSegue(withIdentifier: "loginToStudentMain", sender: self)
                                     return
                                 }
@@ -160,24 +165,22 @@ class SignUpSignInViewController: UIViewController {
         }
     }
     
-    
-    
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "signUpToVerify" {
-            let vc = segue.destination as! EmailVerificationViewController
-            vc.email = emailField.text
-            if let name = nameField.text, let email = emailField.text, let phone = phoneNumberField.text {
-                let currUser = UserDetails(name: name, email: email, phone: phone)
-                vc.userDetails = currUser
-            }
-        } else if segue.identifier == "loginToStudentMain" ||
-                    segue.identifier == "loginToProfessionalMain" {
-            let vc = segue.destination as! UINavigationController
-            vc.modalPresentationStyle = .fullScreen
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //////////////////////////////
+//        if segue.identifier == "signUpToVerify" {
+//            let vc = segue.destination as! EmailVerificationViewController
+//            vc.email = emailField.text
+//            if let name = nameField.text, let email = emailField.text, let phone = phoneNumberField.text {
+//                let currUser = UserDetails(name: name, email: email, phone: phone)
+//                vc.userDetails = currUser
+//            }
+        ////////////////////////
+//        if segue.identifier == "loginToStudentMain" ||
+//                    segue.identifier == "loginToProfessionalMain" {
+//            let vc = segue.destination as! UINavigationController
+//            vc.modalPresentationStyle = .fullScreen
+//        }
+//    }
 }
 
 extension SignUpSignInViewController: UITextFieldDelegate {

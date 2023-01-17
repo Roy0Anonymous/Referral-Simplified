@@ -10,4 +10,5 @@ target 'Referral Simplified' do
   pod 'FirebaseFirestore'
   pod 'FirebaseStorage'
   pod 'IQKeyboardManagerSwift'
+  pod 'iOSDropDown'
 end

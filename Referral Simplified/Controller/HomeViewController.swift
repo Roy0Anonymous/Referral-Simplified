@@ -19,14 +19,17 @@ class HomeViewController: UIViewController {
     var isSignUp: Bool = true
     
     let db = Firestore.firestore()
+    let imageDownSample = ImageDownSample()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         if let url = URL.localURLForXCAsset(name: "DisplayImage") {
-            let downsampledLadyImage = downsample(imageAt: url, to: homeImageView.bounds.size)
-            homeImageView.image = downsampledLadyImage
+            let downsampledImage = imageDownSample.downsample(imageAt: url, to: homeImageView.bounds.size)
+            homeImageView.image = downsampledImage
         }
+        
+//        registerSignInSegmentedControl.overrideUserInterfaceStyle = .light
     }
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
@@ -42,52 +45,12 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
-    func downsample(imageAt imageURL: URL,
-                    to pointSize: CGSize,
-                    scale: CGFloat = UIScreen.main.scale) -> UIImage? {
-
-        // Create an CGImageSource that represent an image
-        let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
-        guard let imageSource = CGImageSourceCreateWithURL(imageURL as CFURL, imageSourceOptions) else {
-            return nil
-        }
-
-        // Calculate the desired dimension
-        let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scale
-
-        // Perform downsampling
-        let downsampleOptions = [
-            kCGImageSourceCreateThumbnailFromImageAlways: true,
-            kCGImageSourceShouldCacheImmediately: true,
-            kCGImageSourceCreateThumbnailWithTransform: true,
-            kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels
-        ] as CFDictionary
-        guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else {
-            return nil
-        }
-
-        // Return the downsampled image as UIImage
-        return UIImage(cgImage: downsampledImage)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homeToSignUpSignIn" {
             let vc = segue.destination as! SignUpSignInViewController
             vc.isSignUp = isSignUp
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension URL {
