@@ -9,15 +9,35 @@ import UIKit
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
+import iOSDropDown
 
 class StudentMainViewController: UIViewController {
     @IBOutlet weak var refererNotAvailable: UILabel!
     let db = Firestore.firestore()
     var companies: [String] = []
-    @IBOutlet weak var searchCompanies: UITextField!
+    
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var searchCompanies: DropDown!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let myColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        let attributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17),
+            .foregroundColor : UIColor.gray
+        ]
+        
+        searchCompanies.layer.cornerRadius = 10.0
+        searchCompanies.layer.borderWidth = 2.0
+        searchCompanies.backgroundColor = myColor
+        searchCompanies.clipsToBounds = true
+        searchCompanies.attributedPlaceholder = NSAttributedString(string: "Get Your Referral", attributes: attributes)
+        
+        searchButton.layer.cornerRadius = 15.0
+        searchButton.clipsToBounds = true
+        
         navigationItem.hidesBackButton = true
         searchCompanies.delegate = self
         refererNotAvailable.isHidden = true
@@ -32,6 +52,7 @@ class StudentMainViewController: UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                     self.companies.append(document.data()["company"] as! String)
+                    self.searchCompanies.optionArray = self.companies
                 }
                 for company in self.companies {
                     print(company)
@@ -55,7 +76,6 @@ class StudentMainViewController: UIViewController {
         }
     }
 
-
     @IBAction func logOut(_ sender: UIBarButtonItem) {
         let firebaseAuth = Auth.auth()
         do {
@@ -77,7 +97,6 @@ class StudentMainViewController: UIViewController {
             }
         }
     }
-
 }
 
 extension StudentMainViewController: UITextFieldDelegate {

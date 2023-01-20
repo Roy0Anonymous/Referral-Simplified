@@ -75,15 +75,14 @@ class StudentDescriptionViewController: UIViewController {
             let newDocumentID = Auth.auth().currentUser?.uid
             print(newDocumentID!)
             db.collection("Students").document(newDocumentID!).setData([
-                "name" : studentDetails.name,
-                "email" : studentDetails.email,
-                "phone" : studentDetails.phone,
+                "name" : studentDetails.name!,
+                "email" : studentDetails.email!,
+                "phone" : studentDetails.phone!,
                 "university" : studentDetails.university!,
                 "degree" : studentDetails.degree!,
                 "graduation" : studentDetails.graduation!,
                 "dob" : studentDetails.dob!,
                 "resume" : resume.absoluteString
-//                "isStudent" : studentDetails.isStudent!
             ], merge: true) { error in
                 if let safeError = error {
                     print(safeError)

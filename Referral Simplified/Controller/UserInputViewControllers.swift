@@ -259,7 +259,7 @@ class StudyHistoryViewController: UIViewController {
     @IBOutlet weak var graduation: DropDown!
     @IBOutlet weak var course: DropDown!
     @IBOutlet weak var universityField: UITextField!
-    
+    @IBOutlet weak var cgpa: UITextField!
     
     
     override func viewDidLoad() {
@@ -294,6 +294,12 @@ class StudyHistoryViewController: UIViewController {
         course.attributedPlaceholder = NSAttributedString(string: "Course", attributes: attributes)
         course.delegate = self
         
+        cgpa.layer.cornerRadius = 10.0
+        cgpa.layer.borderWidth = 2.0
+        cgpa.backgroundColor = myColor
+        cgpa.clipsToBounds = true
+        cgpa.attributedPlaceholder = NSAttributedString(string: "CGPA", attributes: attributes)
+        
         continueButton.layer.cornerRadius = 15.0
         continueButton.clipsToBounds = true
         
@@ -305,10 +311,11 @@ class StudyHistoryViewController: UIViewController {
     
     
     @IBAction func continuePressed(_ sender: UIButton) {
-        if let university = universityField.text, let graduation = graduation.text, let course = course.text, university != "", graduation != "", course != "" {
+        if let university = universityField.text, let graduation = graduation.text, let course = course.text, let cgpa = cgpa.text, university != "", graduation != "", course != "" {
             student.university = university
             student.graduation = Int(graduation)
             student.course = course
+            student.cgpa = Float(cgpa)
             
             performSegue(withIdentifier: "educationToDocuments", sender: self)
         }
@@ -396,7 +403,8 @@ class UploadDocuments: UIViewController {
             "course" : student.course!,
             "graduation" : student.graduation!,
             "resume" : resume.absoluteString,
-            "additional" : student.additionalDoc?.absoluteString ?? "nil"
+            "additional" : student.additionalDoc?.absoluteString ?? "nil",
+            "cgpa" : student.cgpa!
         ], merge: true) { error in
             if let safeError = error {
                 print(safeError)
@@ -405,7 +413,6 @@ class UploadDocuments: UIViewController {
             }
         }
     }
-    
 }
 
 extension UploadDocuments: UIDocumentPickerDelegate {
@@ -415,7 +422,6 @@ extension UploadDocuments: UIDocumentPickerDelegate {
         }
         let currUrl = urls[0]
         _ = currUrl.startAccessingSecurityScopedResource()
-//        print(checkAccess)
         let storageRef = storage.reference()
         let fileName = currUrl.lastPathComponent
         if buttonIdentifier == 1 {
@@ -518,10 +524,11 @@ class CompanyDetails: UIViewController {
     
     @IBAction func donePressed(_ sender: UIButton) {
         
-        if let company = companyField.text, let position = positionField.text, company != "", position != "" {
+        if var company = companyField.text, let position = positionField.text, company != "", position != "" {
             professional.company = company
             professional.position = position
             let newDocumentID = Auth.auth().currentUser?.uid
+            company = company.uppercased()
             db.collection("Professionals").document(newDocumentID!).setData([
                 "name" : professional.name!,
                 "email" : professional.email!,
@@ -530,8 +537,8 @@ class CompanyDetails: UIViewController {
                 "Country" : professional.country!,
                 "City" : professional.city!,
                 "Gender" : professional.gender!,
-                "company" : professional.company!,
-                "position" : professional.phone!
+                "company" : company,
+                "position" : professional.phone!,
             ], merge: true)  { error in
                 if let safeError = error {
                     print(safeError)

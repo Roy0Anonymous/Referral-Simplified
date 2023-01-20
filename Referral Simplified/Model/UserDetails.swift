@@ -27,6 +27,7 @@ class Student: UserDetails {
     var resume: URL?
     var additionalDoc: URL?
     var university: String?
+    var cgpa: Float?
     var degree: String?
     var graduation: Int?
     var course: String?
@@ -37,6 +38,18 @@ class Professional: UserDetails {
     var position: String?
 }
 
+class CellData {
+    var name: String
+    var university: String
+    var cgpa: Float
+    init(name: String, university: String, cgpa: Float) {
+        self.name = name
+        self.university = university
+        self.cgpa = cgpa
+    }
+}
+
 var userDetails = UserDetails()
 var student = Student()
 var professional = Professional()
+

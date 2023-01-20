@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="109" id="KGk-i7-Jjw" customClass="TableViewCell" customModule="Referral_Simplified" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="109"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="406" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeL-Ab-AuQ">
+                        <rect key="frame" x="20" y="11.999999999999998" width="45" height="20.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56q-hQ-W6R">
+                        <rect key="frame" x="20" y="44.333333333333336" width="76" height="20.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CGPA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FC-6Y-xaj">
+                        <rect key="frame" x="19.999999999999996" y="76.666666666666671" width="44.666666666666657" height="20.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.99215686270000003" green="1" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="2FC-6Y-xaj" firstAttribute="top" secondItem="56q-hQ-W6R" secondAttribute="bottom" constant="12" id="07t-CH-Be8"/>
+                    <constraint firstItem="zeL-Ab-AuQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="PIn-HD-DjP"/>
+                    <constraint firstItem="zeL-Ab-AuQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="QyH-hR-bKD"/>
+                    <constraint firstItem="56q-hQ-W6R" firstAttribute="top" secondItem="zeL-Ab-AuQ" secondAttribute="bottom" constant="12" id="SEO-ao-CdI"/>
+                    <constraint firstItem="56q-hQ-W6R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="dnj-X2-Wap"/>
+                    <constraint firstItem="2FC-6Y-xaj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="v55-vx-qCt"/>
+                    <constraint firstAttribute="bottom" secondItem="2FC-6Y-xaj" secondAttribute="bottom" constant="12" id="yqq-ET-fCi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cgpaLabel" destination="2FC-6Y-xaj" id="CE2-KZ-c3D"/>
+                <outlet property="nameLabel" destination="zeL-Ab-AuQ" id="x01-f8-w6i"/>
+                <outlet property="universityLabel" destination="56q-hQ-W6R" id="7gM-n6-Le2"/>
+            </connections>
+            <point key="canvasLocation" x="73.282442748091597" y="42.605633802816904"/>
+        </tableViewCell>
+    </objects>
+</document>
