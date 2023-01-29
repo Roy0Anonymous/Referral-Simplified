@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import ZIMKit
 
 class ProfessionalMainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -32,11 +33,21 @@ class ProfessionalMainViewController: UIViewController {
             docRef.getDocument { (document, error) in
                 if let document = document, document.exists {
                     self.company = (document.data()!["company"] as! String)
+                    professional.name = (document.data()!["name"] as! String)
+                    professional.company = (document.data()!["company"] as! String)
+                    professional.email = (document.data()!["email"] as! String)
+                    professional.phone = (document.data()!["phone"] as! String)
+                    professional.dob = (document.data()!["DOB"] as! String)
+                    professional.country = (document.data()!["Country"] as! String)
+                    professional.city = (document.data()!["City"] as! String)
+                    professional.position = (document.data()!["position"] as! String)
+                    professional.gender = (document.data()!["Gender"] as! String)
                     self.loadData {
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
                     }
+                    self.connectUserAction()
                 }
             }
         }
@@ -55,8 +66,9 @@ class ProfessionalMainViewController: UIViewController {
                     let docRef = self.db.collection("Students").document(documentData["UID"] as! String)
                     docRef.getDocument { (stuData, error) in
                         if let stuData = stuData, stuData.exists {
-                            let cell = CellData(name: stuData["name"] as! String, university: stuData["university"] as! String, cgpa: stuData["cgpa"] as! Float)
+                            let cell = CellData(name: stuData["name"] as! String, university: stuData["university"] as! String, cgpa: stuData["cgpa"] as! Float, uid: documentData["UID"] as! String)
                             self.applications.append(cell)
+//                            print(documentData["UID"])
                             DispatchQueue.main.async {
                                 completion()
                             }
@@ -97,4 +109,36 @@ extension ProfessionalMainViewController: UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
+    func connectUserAction() {
+        // Your ID as a user.
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        let userID: String = currentUser.uid
+        print(userID)
+        // Your name as a user.
+        let userName: String = professional.name!
+        // The image you set as the user avatar must be network image. e.g., https://storage.zego.im/IMKit/avatar/avatar-0.png
+        let userAvatarUrl: String = "https://storage.zego.im/IMKit/avatar/avatar-0.png"
+        
+        let userInfo = UserInfo(userID, userName)
+        userInfo.avatarUrl = userAvatarUrl
+        ZIMKitManager.shared.connectUser(userInfo: userInfo) { [weak self] error in
+            //  Display the UI views after connecting the user successfully.
+            if error.code == .success {
+//                self?.startOneOnOneChat(userID: user)
+            }
+        }
+    }
+    
+    func startOneOnOneChat(userID: String) {
+        let messageVC = MessagesListVC(conversationID: userID, type: .peer)
+        navigationController?.pushViewController(messageVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        startOneOnOneChat(userID: applications[indexPath.row].uid)
+//        print(applications[indexPath.row].uid)
+        startOneOnOneChat(userID: applications[indexPath.row].uid)
+    }
 }

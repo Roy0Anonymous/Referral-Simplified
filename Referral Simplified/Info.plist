@@ -23,5 +23,9 @@
 	</dict>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>We require microphone access to use zimkit.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>We require photo access to use zimkit.</string>
 </dict>
 </plist>

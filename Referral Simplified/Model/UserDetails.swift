@@ -42,10 +42,12 @@ class CellData {
     var name: String
     var university: String
     var cgpa: Float
-    init(name: String, university: String, cgpa: Float) {
+    var uid: String
+    init(name: String, university: String, cgpa: Float, uid: String) {
         self.name = name
         self.university = university
         self.cgpa = cgpa
+        self.uid = uid
     }
 }
 

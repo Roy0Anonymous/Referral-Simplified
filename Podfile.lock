@@ -705,6 +705,7 @@ PODS:
   - GTMSessionFetcher/Core (3.0.0)
   - iOSDropDown (0.3.4)
   - IQKeyboardManagerSwift (6.5.10)
+  - Kingfisher (7.4.1)
   - leveldb-library (1.22.1)
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
@@ -718,6 +719,10 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
+  - ZIM (2.4.2)
+  - ZIMKit (1.2.0):
+    - Kingfisher (= 7.4.1)
+    - ZIM (= 2.4.2)
 
 DEPENDENCIES:
   - FirebaseAuth
@@ -725,6 +730,7 @@ DEPENDENCIES:
   - FirebaseStorage
   - iOSDropDown
   - IQKeyboardManagerSwift
+  - ZIMKit
 
 SPEC REPOS:
   trunk:
@@ -744,10 +750,13 @@ SPEC REPOS:
     - GTMSessionFetcher
     - iOSDropDown
     - IQKeyboardManagerSwift
+    - Kingfisher
     - leveldb-library
     - Libuv-gRPC
     - nanopb
     - PromisesObjC
+    - ZIM
+    - ZIMKit
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -766,11 +775,14 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: c1edebe64e9fb4e8f6415d018edf1fd3eac074a1
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  ZIM: 8dd5f80f38f51f1ea20057b1848e49dd20d3ff1e
+  ZIMKit: 717a227c474b66aa01d696d46467532f01528c3e
 
-PODFILE CHECKSUM: 687044abafe1189dd3ae9679228021ef37a9f5ef
+PODFILE CHECKSUM: a2645714bc569bf122612a8548db4181cf1fd287
 
 COCOAPODS: 1.11.3

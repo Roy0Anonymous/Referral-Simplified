@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import ZIMKit
 
 class ProfessionalSettingsViewController: UIViewController {
 
@@ -20,6 +21,7 @@ class ProfessionalSettingsViewController: UIViewController {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
+            ZIMKitManager.shared.disconnectUser()
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let homePage = mainStoryboard.instantiateViewController(withIdentifier: "InitialNavController") as! UINavigationController
             homePage.modalPresentationStyle = .fullScreen

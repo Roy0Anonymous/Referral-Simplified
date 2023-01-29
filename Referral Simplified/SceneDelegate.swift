@@ -30,6 +30,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 docRef.getDocument { (document, error) in
                     if let document = document, document.exists {
                         print("Student me ghusa")
+                        student.name = (document.data()!["name"] as! String)
+                        student.university = (document.data()!["university"] as! String)
+                        student.cgpa = (document.data()!["cgpa"] as! Float)
+                        student.course = (document.data()!["course"] as! String)
+                        student.graduation = (document.data()!["graduation"] as! Int)
+                        student.gender = (document.data()!["gender"] as! String)
+                        student.country = (document.data()!["country"] as! String)
+                        student.city = (document.data()!["city"] as! String)
+                        student.dob = (document.data()!["dob"] as! String)
+                        student.phone = (document.data()!["phone"] as! String)
+                        student.email = (document.data()!["email"] as! String)
+                        student.additionalDoc = URL(string: (document.data()!["additional"] as! String))
+                        student.resume = URL(string: (document.data()!["resume"] as! String))
+                        
                         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let homePage = mainStoryboard.instantiateViewController(withIdentifier: "studentlNavController") as! UINavigationController
                         Firestore.firestore().enableNetwork { (error) in }
@@ -43,6 +57,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 docRef.getDocument { (document, error) in
                     if let document = document, document.exists {
                         print("Professional me ghusa")
+                        
+                        professional.name = (document.data()!["name"] as! String)
+                        professional.company = (document.data()!["company"] as! String)
+                        professional.email = (document.data()!["email"] as! String)
+                        professional.phone = (document.data()!["phone"] as! String)
+                        professional.dob = (document.data()!["DOB"] as! String)
+                        professional.country = (document.data()!["Country"] as! String)
+                        professional.city = (document.data()!["City"] as! String)
+                        professional.position = (document.data()!["position"] as! String)
+                        professional.gender = (document.data()!["Gender"] as! String)
+                        
                         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let homePage = mainStoryboard.instantiateViewController(withIdentifier: "professionalNavController") as! UINavigationController
                         Firestore.firestore().enableNetwork { (error) in }
