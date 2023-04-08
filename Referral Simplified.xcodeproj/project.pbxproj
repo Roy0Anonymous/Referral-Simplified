@@ -30,6 +30,7 @@
 		C6C8E904295E1F49009A93A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C8E903295E1F49009A93A0 /* Assets.xcassets */; };
 		C6C8E907295E1F49009A93A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C8E905295E1F49009A93A0 /* LaunchScreen.storyboard */; };
 		C6C8E911295E278A009A93A0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C8E910295E278A009A93A0 /* HomeViewController.swift */; };
+		C6DD1373298811430089EF52 /* UploadImageForProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD1372298811430089EF52 /* UploadImageForProfileViewController.swift */; };
 		C6DE28302965F4CD00AC746C /* CompanyPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE282F2965F4CD00AC746C /* CompanyPortalViewController.swift */; };
 		C6DE28322965FE3700AC746C /* ProfessionalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE28312965FE3700AC746C /* ProfessionalMainViewController.swift */; };
 		C6F9B95F2970B4B700365F12 /* UserInputViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F9B95E2970B4B700365F12 /* UserInputViewControllers.swift */; };
@@ -65,6 +66,7 @@
 		C6C8E906295E1F49009A93A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6C8E908295E1F49009A93A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C8E910295E278A009A93A0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C6DD1372298811430089EF52 /* UploadImageForProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageForProfileViewController.swift; sourceTree = "<group>"; };
 		C6DE282F2965F4CD00AC746C /* CompanyPortalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyPortalViewController.swift; sourceTree = "<group>"; };
 		C6DE28312965FE3700AC746C /* ProfessionalMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalMainViewController.swift; sourceTree = "<group>"; };
 		C6F9B95E2970B4B700365F12 /* UserInputViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputViewControllers.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				C67226762985A519006B2918 /* StudentChatViewController.swift */,
 				C67226782985C4CA006B2918 /* ProfessionalChatViewController.swift */,
 				C672267A2986E335006B2918 /* ReferralRequestViewController.swift */,
+				C6DD1372298811430089EF52 /* UploadImageForProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				C611A58D295FA6DD0048D323 /* ProfessionalDescriptionViewController.swift in Sources */,
 				C634580E297AF307002EF844 /* StudentSettingsViewController.swift in Sources */,
 				C69EBA1D295F791F0047BB0A /* StuProSelectionViewController.swift in Sources */,
+				C6DD1373298811430089EF52 /* UploadImageForProfileViewController.swift in Sources */,
 				C6C8E8FB295E1F47009A93A0 /* AppDelegate.swift in Sources */,
 				C6C8E911295E278A009A93A0 /* HomeViewController.swift in Sources */,
 				C6345810297B00EE002EF844 /* ProfessionalSettingsViewController.swift in Sources */,

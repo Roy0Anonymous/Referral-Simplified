@@ -19,12 +19,16 @@ class BirthdayViewController: UIViewController {
     @IBOutlet weak var day: DropDown!
     @IBOutlet weak var continueButton: UIButton!
     
+    @IBOutlet weak var titleLabel: UILabel!
     let monthOptions = ["January","February","March","April","May","June","July","August","September","October","November","December"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        titleLabel.text = "What are you here for, \(userDetails.name!)?"
+        
         if UserDetails.isStudent == true {
             navigationItem.title = "Step 1 of 5"
         } else {
@@ -92,6 +96,7 @@ class BirthdayViewController: UIViewController {
 
 class CountryCityViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var country: DropDown!
@@ -99,6 +104,7 @@ class CountryCityViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        titleLabel.text = "What are you here for, \(userDetails.name!)?"
         
         if UserDetails.isStudent == true {
             navigationItem.title = "Step 2 of 5"
@@ -149,6 +155,7 @@ class CountryCityViewController: UIViewController {
 
 class GenderViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var nonBinaryButton: UIButton!
@@ -159,11 +166,10 @@ class GenderViewController: UIViewController {
     @IBOutlet weak var nonBinaryImageView: UIImageView!
     
     var isMale: Int?
-    let imageDownSample = ImageDownSample()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        titleLabel.text = "What are you here for, \(userDetails.name!)?"
         if UserDetails.isStudent == true {
             navigationItem.title = "Step 3 of 5"
         } else {
@@ -171,15 +177,15 @@ class GenderViewController: UIViewController {
         }
         
         if let url = URL.localURLForXCAsset(name: "Male") {
-            let downsampledImage = imageDownSample.downsample(imageAt: url, to: maleImageView.bounds.size)
+            let downsampledImage = ImageDownSample.downsample(imageAt: url, to: maleImageView.bounds.size)
             maleImageView.image = downsampledImage
         }
         if let url = URL.localURLForXCAsset(name: "Female") {
-            let downsampledImage = imageDownSample.downsample(imageAt: url, to: femaleImageView.bounds.size)
+            let downsampledImage = ImageDownSample.downsample(imageAt: url, to: femaleImageView.bounds.size)
             femaleImageView.image = downsampledImage
         }
         if let url = URL.localURLForXCAsset(name: "Prefer Not To Say") {
-            let downsampledImage = imageDownSample.downsample(imageAt: url, to: nonBinaryImageView.bounds.size)
+            let downsampledImage = ImageDownSample.downsample(imageAt: url, to: nonBinaryImageView.bounds.size)
             nonBinaryImageView.image = downsampledImage
         }
         
@@ -237,7 +243,7 @@ class GenderViewController: UIViewController {
             } else {
                 student.gender = "Prefer Not to Say"
             }
-            performSegue(withIdentifier: "genderToEducation", sender: self)
+//            performSegue(withIdentifier: "genderToEducation", sender: self)
         } else {
             if isMale == 1 {
                 professional.gender = "Male"
@@ -246,13 +252,15 @@ class GenderViewController: UIViewController {
             } else {
                 professional.gender = "Prefer Not to Say"
             }
-            performSegue(withIdentifier: "genderToCompanyDetails", sender: self)
+//            performSegue(withIdentifier: "genderToCompanyDetails", sender: self)
         }
+        performSegue(withIdentifier: "genderToProfilePic", sender: self)
     }
 }
 
 class StudyHistoryViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var continueButton: UIButton!
@@ -264,7 +272,7 @@ class StudyHistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        titleLabel.text = "What are you here for, \(userDetails.name!)?"
         navigationItem.title = "Step 4 of 5"
         
         let myColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -307,6 +315,8 @@ class StudyHistoryViewController: UIViewController {
         course.optionArray = [
             "BTech", "BArch", "BCA", "BSc", "MS", "MTech", "MCA", "MBA"
         ]
+        
+        print(student.profile?.absoluteString)
     }
     
     
@@ -404,7 +414,8 @@ class UploadDocuments: UIViewController {
             "graduation" : student.graduation!,
             "resume" : resume.absoluteString,
             "additional" : student.additionalDoc?.absoluteString ?? "nil",
-            "cgpa" : student.cgpa!
+            "cgpa" : student.cgpa!,
+            "profile" : student.profile?.absoluteString ?? "nil"
         ], merge: true) { error in
             if let safeError = error {
                 print(safeError)
@@ -488,6 +499,7 @@ extension UploadDocuments: UIDocumentPickerDelegate {
 
 class CompanyDetails: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var positionField: UITextField!
     @IBOutlet weak var companyField: UITextField!
@@ -496,7 +508,7 @@ class CompanyDetails: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        titleLabel.text = "What are you here for, \(userDetails.name!)?"
         navigationItem.title = "Step 4 of 4"
         
         let myColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -539,6 +551,7 @@ class CompanyDetails: UIViewController {
                 "Gender" : professional.gender!,
                 "company" : company,
                 "position" : professional.phone!,
+                "profile" : professional.profile?.absoluteString ?? "nil"
             ], merge: true)  { error in
                 if let safeError = error {
                     print(safeError)

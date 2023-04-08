@@ -15,6 +15,7 @@ class UserDetails {
     var city: String?
     var country: String?
     var gender: String?
+    var profile: URL?
     static var isStudent: Bool?
     init(name: String? = nil, email: String? = nil, phone: String? = nil) {
         self.name = name

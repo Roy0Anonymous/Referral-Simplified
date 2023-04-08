@@ -19,13 +19,12 @@ class HomeViewController: UIViewController {
     var isSignUp: Bool = true
     
     let db = Firestore.firestore()
-    let imageDownSample = ImageDownSample()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         if let url = URL.localURLForXCAsset(name: "DisplayImage") {
-            let downsampledImage = imageDownSample.downsample(imageAt: url, to: homeImageView.bounds.size)
+            let downsampledImage = ImageDownSample.downsample(imageAt: url, to: homeImageView.bounds.size)
             homeImageView.image = downsampledImage
         }
         

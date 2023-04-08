@@ -16,6 +16,7 @@ class ReferralRequestViewController: UIViewController {
     @IBOutlet weak var githubField: UITextField!
     @IBOutlet weak var linkedinField: UITextField!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var jobLinkField: UITextField!
     
     let db = Firestore.firestore()
     var codingEditing = false
@@ -60,6 +61,12 @@ class ReferralRequestViewController: UIViewController {
         githubField.clipsToBounds = true
         githubField.attributedPlaceholder = NSAttributedString(string: "Github", attributes: attributes)
         
+        jobLinkField.layer.cornerRadius = 10.0
+        jobLinkField.layer.borderWidth = 2.0
+        jobLinkField.backgroundColor = myColor
+        jobLinkField.clipsToBounds = true
+        jobLinkField.attributedPlaceholder = NSAttributedString(string: "Github", attributes: attributes)
+        
         submitButton.layer.cornerRadius = 15.0
         submitButton.clipsToBounds = true
     }
@@ -71,7 +78,8 @@ class ReferralRequestViewController: UIViewController {
               let githubId = githubField.text,
               let linkedinId = linkedinField.text,
               let referReason = reasonForReferral.text,
-              let userId = userId else {
+              let userId = userId,
+              let jobLink = jobLinkField.text else {
             return
         }
         
@@ -81,6 +89,7 @@ class ReferralRequestViewController: UIViewController {
             "Github ID" : githubId,
             "Linkedin ID" : linkedinId,
             "Refer Reason" : referReason,
+            "Job Link" : jobLink,
             "time" : Date().timeIntervalSince1970
         ]) { err in
             if let err = err {

@@ -62,6 +62,7 @@ class StudentMainViewController: UIViewController {
                     student.email = (document.data()!["email"] as! String)
                     student.additionalDoc = URL(string: (document.data()!["additional"] as! String))
                     student.resume = URL(string: (document.data()!["resume"] as! String))
+                    student.profile = URL(string: (document.data()!["profile"] as! String))
                     self.connectUserAction()
                 }
             }
@@ -78,8 +79,9 @@ class StudentMainViewController: UIViewController {
         // Your name as a user.
         let userName: String = student.name!
         // The image you set as the user avatar must be network image. e.g., https://storage.zego.im/IMKit/avatar/avatar-0.png
-        let userAvatarUrl: String = "https://storage.zego.im/IMKit/avatar/avatar-0.png"
-        
+        let userAvatarUrl: String = student.profile!.absoluteString
+        print(userAvatarUrl)
+        print("HULULULULULUL")
         let userInfo = UserInfo(userID, userName)
         userInfo.avatarUrl = userAvatarUrl
         ZIMKitManager.shared.connectUser(userInfo: userInfo) { [weak self] error in

@@ -42,6 +42,7 @@ class ProfessionalMainViewController: UIViewController {
                     professional.city = (document.data()!["City"] as! String)
                     professional.position = (document.data()!["position"] as! String)
                     professional.gender = (document.data()!["Gender"] as! String)
+                    professional.profile = URL(string: (document.data()!["profile"] as! String))
                     self.loadData {
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
@@ -119,8 +120,9 @@ extension ProfessionalMainViewController: UITableViewDelegate, UITableViewDataSo
         // Your name as a user.
         let userName: String = professional.name!
         // The image you set as the user avatar must be network image. e.g., https://storage.zego.im/IMKit/avatar/avatar-0.png
-        let userAvatarUrl: String = "https://storage.zego.im/IMKit/avatar/avatar-0.png"
-        
+        let userAvatarUrl: String = professional.profile!.absoluteString
+        print(professional.profile!)
+        print("HULULULULULUL")
         let userInfo = UserInfo(userID, userName)
         userInfo.avatarUrl = userAvatarUrl
         ZIMKitManager.shared.connectUser(userInfo: userInfo) { [weak self] error in

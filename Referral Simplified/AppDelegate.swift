@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
 
-        let appID: UInt32 = 320722292
-        let appSign: String = "a4fd9919cb63689bbd7c0591de01883e4d3a2f6818941003adffb7503dc55cf3"
+        let appID: UInt32 = 525298397
+        let appSign: String = "88c4d5c53a039ccec7c23d287b9ee5036b4ebfe194ee2867ae4115e74c7a2ccc"
         ZIMKitManager.shared.initWith(appID: appID, appSign: appSign)
         
         return true

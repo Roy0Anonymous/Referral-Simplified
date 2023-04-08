@@ -16,13 +16,14 @@ class StuProSelectionViewController: UIViewController {
     @IBOutlet weak var giveImageView: UIImageView!
     @IBOutlet weak var takeImageView: UIImageView!
     
-    let imageDownSample = ImageDownSample()
-    
+    @IBOutlet weak var titleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         navigationItem.hidesBackButton = true
+        
+        titleLabel.text = "What are you here for, \(userDetails.name!)?"
         
         askingButton.layer.cornerRadius = 15.0
         askingButton.layer.borderWidth = 2.0
@@ -38,11 +39,11 @@ class StuProSelectionViewController: UIViewController {
         continueButton.clipsToBounds = true
         
         if let url = URL.localURLForXCAsset(name: "Giving") {
-            let downsampledImage = imageDownSample.downsample(imageAt: url, to: giveImageView.bounds.size)
+            let downsampledImage = ImageDownSample.downsample(imageAt: url, to: giveImageView.bounds.size)
             giveImageView.image = downsampledImage
         }
         if let url = URL.localURLForXCAsset(name: "Taking") {
-            let downsampledImage = imageDownSample.downsample(imageAt: url, to: takeImageView.bounds.size)
+            let downsampledImage = ImageDownSample.downsample(imageAt: url, to: takeImageView.bounds.size)
             takeImageView.image = downsampledImage
         }
     }
@@ -52,8 +53,6 @@ class StuProSelectionViewController: UIViewController {
         givingButton.layer.borderColor = UIColor(red: 235/255, green: 69/255, blue: 102/255, alpha: 1).cgColor
         
         UserDetails.isStudent = false
-        
-//        performSegue(withIdentifier: "selectionToStudentDes", sender: self)
     }
     
     @IBAction func askingPressed(_ sender: UIButton) {
@@ -61,8 +60,6 @@ class StuProSelectionViewController: UIViewController {
         givingButton.layer.borderColor = UIColor.black.cgColor
         
         UserDetails.isStudent = true
-        
-//        performSegue(withIdentifier: "selectionToProDes", sender: self)
     }
     
     

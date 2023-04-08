@@ -43,6 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         student.email = (document.data()!["email"] as! String)
                         student.additionalDoc = URL(string: (document.data()!["additional"] as! String))
                         student.resume = URL(string: (document.data()!["resume"] as! String))
+                        student.profile = URL(string: (document.data()!["profile"] as! String))
                         
                         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let homePage = mainStoryboard.instantiateViewController(withIdentifier: "studentlNavController") as! UINavigationController
@@ -67,6 +68,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         professional.city = (document.data()!["City"] as! String)
                         professional.position = (document.data()!["position"] as! String)
                         professional.gender = (document.data()!["Gender"] as! String)
+                        professional.profile = URL(string: (document.data()!["profile"] as! String))
                         
                         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let homePage = mainStoryboard.instantiateViewController(withIdentifier: "professionalNavController") as! UINavigationController

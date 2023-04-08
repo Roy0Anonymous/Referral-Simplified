@@ -13,13 +13,12 @@ class EmailVerificationViewController: UIViewController {
 //    var userDetails: UserDetails = UserDetails(name: "", email: "", phone: "")
     @IBOutlet weak var emailImageView: UIImageView!
     
-    let imageDownSample = ImageDownSample()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         if let url = URL.localURLForXCAsset(name: "Email") {
-            let downsampledImage = imageDownSample.downsample(imageAt: url, to: emailImageView.bounds.size)
+            let downsampledImage = ImageDownSample.downsample(imageAt: url, to: emailImageView.bounds.size)
             emailImageView.image = downsampledImage
         }
 //

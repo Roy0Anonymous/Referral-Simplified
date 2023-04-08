@@ -8,7 +8,7 @@
 import UIKit
 
 struct ImageDownSample {
-    func downsample(imageAt imageURL: URL,
+    static func downsample(imageAt imageURL: URL,
                     to pointSize: CGSize,
                     scale: CGFloat = UIScreen.main.scale) -> UIImage? {
 
